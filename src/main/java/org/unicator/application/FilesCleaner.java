@@ -17,7 +17,7 @@ public class FilesCleaner {
     public static void main(String[] args) {
 
         if (args.length < 2) {
-            System.out.println("Application usage: <program> <base path> <duplicates path> \n");
+            System.out.println("Application usage: <program> <base path> <duplicates path> [<delete files (\"false\" by default)>] \n");
             System.exit(1);
         }
 
@@ -26,6 +26,11 @@ public class FilesCleaner {
 
         final String duplicatesPath = args[1];
         JavaUtils.checkDirectoryExists(duplicatesPath);
+        
+        boolean deleteFiles = false;
+        if (args.length > 2) {
+            deleteFiles = Boolean.parseBoolean(args[2]);
+        }
 
         final File duplicatesDirectory = new File(duplicatesPath);
         final String duplicatesAbsolutePath = duplicatesDirectory.getAbsolutePath();
@@ -42,8 +47,11 @@ public class FilesCleaner {
                     final File entryFromIndex = new File(basePath, indeces.get(index).getFilePath());
                     if (FileUtils.contentEquals(entryFromIndex, file)) {
                         JavaUtils.printToConsole("File " + file.getAbsolutePath() + " is duplicate of "
-                            + entryFromIndex.getAbsolutePath() + " and will be deleted");
-                        // file.delete();
+                            + entryFromIndex.getAbsolutePath());
+                        if (deleteFiles) {
+                            JavaUtils.printToConsole("Deleting file " + file.getAbsolutePath() + "...");
+                            file.delete();
+                        }
                     }
 
                 }
