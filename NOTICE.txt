@@ -1,0 +1,7 @@
+This software makes use of the following libraries:
+
+commons-io 2.4
+http://commons.apache.org/io/
+Copyright 2010 The Apache Software Foundation 
+Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0.txt
+
