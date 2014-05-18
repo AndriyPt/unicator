@@ -1,0 +1,13 @@
+#summary Main landing page
+#labels Featured,Phase-Requirements
+
+= Introduction =
+
+This Wiki is under development
+
+
+= Details =
+
+How to run application
+
+mvn exec:java -Dexec.mainClass="org.unicator.application.FilesIndexer" -Dexec.args=""
