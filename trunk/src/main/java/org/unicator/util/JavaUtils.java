@@ -13,6 +13,14 @@ public class JavaUtils {
     public static void printToConsole(final String message) {
         System.out.println(getCurrentTime() + ": " + message);
     }
+    
+    public static void clearConsoleOutput(final String text) {
+        StringBuilder sb = new StringBuilder(text.length());
+        for (int i = 0; i < text.length(); i++) {
+            sb.append('\b');
+        }
+        System.out.print(sb.toString());
+    }
 
     public static void checkFileExists(final String fileName) {
 

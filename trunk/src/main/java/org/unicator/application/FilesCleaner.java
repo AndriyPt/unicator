@@ -17,7 +17,8 @@ public class FilesCleaner {
     public static void main(String[] args) {
 
         if (args.length < 2) {
-            System.out.println("Application usage: <program> <base path> <duplicates path> [<delete files (\"false\" by default)>] \n");
+            System.out.println("Application usage: <program> <base path> <duplicates path> "
+                + "[<delete files (\"false\" by default)>] \n");
             System.exit(1);
         }
 
@@ -26,7 +27,7 @@ public class FilesCleaner {
 
         final String duplicatesPath = args[1];
         JavaUtils.checkDirectoryExists(duplicatesPath);
-        
+
         boolean deleteFiles = false;
         if (args.length > 2) {
             deleteFiles = Boolean.parseBoolean(args[2]);
