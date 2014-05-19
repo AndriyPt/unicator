@@ -28,15 +28,29 @@ public class IndexUtils {
 
         final File directoryBasePath = new File(basePath);
         final String absoluteBasePath = directoryBasePath.getAbsolutePath();
+        
+        JavaUtils.printToConsole("Scanning folders...");
 
         final Collection<File> allFiles = FileUtils.listFiles(directoryBasePath, null, true);
         final List<IndexInfo> entries = new ArrayList<IndexInfo>(allFiles.size());
-
+        
+        JavaUtils.printToConsole("Building index...");
+        int count = 1;
         for (File file : allFiles) {
+            
+            String statusMessage = "" + count + " of "  + allFiles.size();
+            System.out.print(statusMessage);
+            count++;
+            
             entries.add(getIndexInfoFromFile(absoluteBasePath, file));
+            
+            JavaUtils.clearConsoleOutput(statusMessage);
         }
+        
+        JavaUtils.printToConsole("Soring index...");
         Collections.sort(entries, new IndexInfoComparator());
 
+        JavaUtils.printToConsole("Saving index...");
         File indexFile = new File(basePath, INDEX_FILE_NAME);
         FileUtils.writeLines(indexFile, entries);
     }
