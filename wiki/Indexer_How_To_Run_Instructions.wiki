@@ -15,8 +15,12 @@ _*Note:* mvn should also be in the search path of the OS which you are using._
   * Download source code of the tool
   * execute only once
 
-`mvn compile`
+{{{
+mvn compile
+}}}
 
   * run following command line to create index file filesIndex.idx in the folder provided 
 
-`mvn exec:java -Dexec.mainClass="org.unicator.application.FilesIndexer" -Dexec.args="c:\my_photos"`
+{{{
+mvn exec:java -Dexec.mainClass="org.unicator.application.FilesIndexer" -Dexec.args="c:\my_photos"
+}}}
